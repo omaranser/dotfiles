@@ -8,49 +8,122 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/goyo.vim'
-Plug 'jreybert/vimagit'
-Plug 'lukesmithxyz/vimling'
 Plug 'vimwiki/vimwiki'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
+Plug 'junegunn/limelight.vim'
+Plug 'mattn/emmet-vim'
+Plug 'sirver/UltiSnips'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-surround'
+Plug 'unblevable/quick-scope'
+" git
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'junegunn/gv.vim'
+" cmp plugins
+Plug 'hrsh7th/nvim-cmp' " the completion plugin
+Plug 'hrsh7th/cmp-buffer' " buffer completions
+Plug 'hrsh7th/cmp-path' " path completions
+Plug 'hrsh7th/cmp-cmdline' " cmdline completions
+Plug 'saadparwaiz1/cmp_luasnip' " snippet completions
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lua'
+" snippets
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
+" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'jose-elias-alvarez/null-ls.nvim' " for formatters and linters
+" Telescope
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope-media-files.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+" Harpoon
+Plug 'ThePrimeagen/harpoon'
+" nvim-treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+Plug 'romgrk/nvim-treesitter-context'
+" indentLine
+Plug 'Yggdroot/indentLine'
+" tagbar
+Plug 'majutsushi/tagbar'
+" icons nerdtree
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
 
-set title
-set bg=light
-set go=a
-set mouse=a
-set nohlsearch
-set clipboard+=unnamedplus
-set noshowmode
-set noruler
-set laststatus=0
-set noshowcmd
+lua require("user.cmp")
+lua require("user.lsp")
+lua require("user.telescope")
+lua require("user.treesitter")
 
-" Some basics:
-	nnoremap c "_c
-	set nocompatible
-	filetype plugin on
-	syntax on
-	set encoding=utf-8
-	set number relativenumber
+" vim-signify
+	let g:signify_sign_add               = '+'
+	let g:signify_sign_delete            = '_'
+	let g:signify_sign_delete_first_line = '‾'
+	let g:signify_sign_change            = '~'
+
+	let g:signify_sign_show_count = 0
+	let g:signify_sign_show_text = 1
+
+	highlight SignifySignAdd    ctermfg=blue
+	highlight SignifySignDelete ctermfg=red
+	highlight SignifySignChange ctermfg=yellow
+
+" search with *
+	nnoremap <leader>* <Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>
+	nnoremap <esc><esc> :silent! nohls<cr>
+
+" search and replace selected text
+	vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
 " Enable autocompletion:
 	set wildmode=longest,list,full
+
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " Perform dot commands over visual blocks:
 	vnoremap . :normal .<CR>
+
 " Goyo plugin makes text more readable when writing prose:
 	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
+
+" limelight
+	let g:limelight_conceal_ctermfg = 240
+	nnoremap <leader>ll :Limelight!!<cr>
+" emmet
+	let g:user_emmet_mode = 'i' " only enable insert mode functions
+	let g:user_emmet_install_global = 0
+	autocmd FileType html,css EmmetInstall
+	imap <leader>e <C-y>,
+
+" quick-scope
+	let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+	let g:qs_max_chars=512
+
 " Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>o :setlocal spell! spelllang=en_us<CR>
+	map <leader>oe :setlocal spell! spelllang=en_us<CR>
+	map <leader>of :setlocal spell! spelllang=fr<CR>
+
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
 
 " Nerd tree
+	let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+	let NERDTreeMinimalUI = 1
 	map <leader>n :NERDTreeToggle<CR>
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     if has('nvim')
@@ -59,12 +132,8 @@ set noshowcmd
         let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
     endif
 
-" vimling:
-	nm <leader><leader>d :call ToggleDeadKeys()<CR>
-	imap <leader><leader>d <esc>:call ToggleDeadKeys()<CR>a
-	nm <leader><leader>i :call ToggleIPA()<CR>
-	imap <leader><leader>i <esc>:call ToggleIPA()<CR>a
-	nm <leader><leader>q :call ToggleProse()<CR>
+" tagbar
+	nmap <F8> :TagbarToggle<CR>
 
 " Shortcutting split navigation, saving a keypress:
 	map <C-h> <C-w>h
@@ -82,8 +151,32 @@ set noshowcmd
 	map <leader>b :vsp<space>$BIB<CR>
 	map <leader>r :vsp<space>$REFER<CR>
 
-" Replace all is aliased to S.
-	nnoremap S :%s//g<Left><Left>
+" Open current directory
+	nmap te :tabedit
+	nmap <S-Tab> :tabprev<Return>
+	nmap <Tab> :tabnext<Return>
+
+" Split window
+	nmap ss :split<Return><C-w>w
+	nmap sv :vsplit<Return><C-w>w
+
+" Move window
+	map s<left> <C-w>h
+	map s<up> <C-w>k
+	map s<down> <C-w>j
+	map s<right> <C-w>l
+	map sh <C-w>h
+	map sk <C-w>k
+	map sj <C-w>j
+	map sl <C-w>l
+
+" Resize window
+	nnoremap <Leader>+ :vertical resize +5<CR>
+	nnoremap <Leader>- :vertical resize -5<CR>
+
+" move selected lines up or down
+	vnoremap J :m '>+1<CR>gv=gv
+	vnoremap K :m '<-2<CR>gv=gv
 
 " Compile document, be it groff/LaTeX/markdown/etc.
 	map <leader>c :w! \| !compiler "<c-r>%"<CR>
@@ -96,8 +189,8 @@ set noshowcmd
 
 " Ensure files are read as what I want:
 	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-	map <leader>v :VimwikiIndex
-	let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+	map <leader>v :VimwikiIndex<CR>
+	let g:vimwiki_list = [{'path': '~/.local/share/nvim/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
@@ -111,10 +204,12 @@ set noshowcmd
 	autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
 	autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>
 
-" Automatically deletes all trailing whitespace and newlines at end of file on save.
+" Automatically deletes all trailing whitespace and newlines at end of file on save. & reset cursor position
+ 	autocmd BufWritePre * let currPos = getpos(".")
 	autocmd BufWritePre * %s/\s\+$//e
 	autocmd BufWritePre * %s/\n\+\%$//e
 	autocmd BufWritePre *.[ch] %s/\%$/\r/e
+  	autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
 
 " When shortcut files are updated, renew bash and ranger configs with new material:
 	autocmd BufWritePost bm-files,bm-dirs !shortcuts
@@ -130,7 +225,7 @@ if &diff
 endif
 
 " Function for toggling the bottom statusbar:
-let s:hidden_all = 1
+let s:hidden_all = 0
 function! ToggleHiddenAll()
     if s:hidden_all  == 0
         let s:hidden_all = 1
@@ -147,3 +242,9 @@ function! ToggleHiddenAll()
     endif
 endfunction
 nnoremap <leader>h :call ToggleHiddenAll()<CR>
+
+" Load command shortcuts generated from bm-dirs and bm-files via shortcuts script.
+" Here leader is ";".
+" So ":vs ;cfz" will expand into ":vs /home/<user>/.config/zsh/.zshrc"
+" if typed fast without the timeout.
+source ~/.config/nvim/shortcuts.vim
