@@ -7,6 +7,9 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 	autocmd VimEnter * PlugInstall
 endif
 
+map ,, :keepp /<++><CR>ca<
+imap ,, <esc>:keepp /<++><CR>ca<
+
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ervandew/supertab'
@@ -22,6 +25,8 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
+Plug 'christoomey/vim-tmux-navigator'
+"Plug 'windwp/nvim-autopairs'
 " git
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
@@ -81,7 +86,7 @@ lua require("user.treesitter")
 	highlight SignifySignDelete ctermfg=red
 	highlight SignifySignChange ctermfg=yellow
 
-" search with *
+" search with leader*
 	nnoremap <leader>* <Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>
 	nnoremap <esc><esc> :silent! nohls<cr>
 
@@ -134,11 +139,18 @@ lua require("user.treesitter")
 " tagbar
 	nmap <F8> :TagbarToggle<CR>
 
+" vimling:
+	nm <leader>d :call ToggleDeadKeys()<CR>
+	imap <leader>d <esc>:call ToggleDeadKeys()<CR>a
+	nm <leader>i :call ToggleIPA()<CR>
+	imap <leader>i <esc>:call ToggleIPA()<CR>a
+	nm <leader>q :call ToggleProse()<CR>
+
 " Shortcutting split navigation, saving a keypress:
-	map <C-h> <C-w>h
-	map <C-j> <C-w>j
-	map <C-k> <C-w>k
-	map <C-l> <C-w>l
+	nnoremap <C-J> <C-W><C-J>
+	nnoremap <C-K> <C-W><C-K>
+	nnoremap <C-L> <C-W><C-L>
+	nnoremap <C-H> <C-W><C-H>
 
 " Replace ex mode with gq
 	map Q gq
@@ -159,16 +171,6 @@ lua require("user.treesitter")
 	nmap ss :split<Return><C-w>w
 	nmap sv :vsplit<Return><C-w>w
 
-" Move window
-	map s<left> <C-w>h
-	map s<up> <C-w>k
-	map s<down> <C-w>j
-	map s<right> <C-w>l
-	map sh <C-w>h
-	map sk <C-w>k
-	map sj <C-w>j
-	map sl <C-w>l
-
 " Resize window
 	nnoremap <Leader>+ :vertical resize +5<CR>
 	nnoremap <Leader>- :vertical resize -5<CR>
@@ -178,10 +180,10 @@ lua require("user.treesitter")
 	vnoremap K :m '<-2<CR>gv=gv
 
 " Compile document, be it groff/LaTeX/markdown/etc.
-	map <leader>c :w! \| !compiler "<c-r>%"<CR>
+	map <leader>c :w! \| !compiler "%:p"<CR>
 
 " Open corresponding .pdf/.html or preview
-	map <leader>p :!opout <c-r>%<CR><CR>
+	map <leader>p :!opout "%:p"<CR>
 
 " Runs a script that cleans out tex build files whenever I close out of a .tex file.
 	autocmd VimLeave *.tex !texclear %
@@ -195,7 +197,7 @@ lua require("user.treesitter")
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
 
 " Save file as sudo on files that require root permission
-	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+	cabbrev w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Enable Goyo by default for mutt writing
 	autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
