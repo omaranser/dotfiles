@@ -45,7 +45,7 @@ packer.init {
 return packer.startup(function(use)
 	-- must have plugins
 	use("wbthomason/packer.nvim") -- Have packer manage itself
-	use("preservim/nerdtree")
+--	use("preservim/nerdtree")
 	use("nvim-lua/plenary.nvim")
 	use("junegunn/goyo.vim")
 	use{"vimwiki/vimwiki",
@@ -96,6 +96,8 @@ return packer.startup(function(use)
 		  {'rafamadriz/friendly-snippets'},
 	  }
   	}
+	use("jose-elias-alvarez/null-ls.nvim")
+	use("RRethy/vim-illuminate")
 	-- harpoon
 	use("ThePrimeagen/harpoon")
   if PACKER_BOOTSTRAP then
