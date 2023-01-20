@@ -67,13 +67,16 @@ return packer.startup(function(use)
       	}
 		end
 	}
-	use("tpope/vim-surround")
+ 	use('mbbill/undotree')
+ 	use("tpope/vim-surround")
 	use("vim-airline/vim-airline")
 	use("tpope/vim-commentary")
 	-- use("ap/vim-css-color")
 
 	-- Colorschemes
-	use("gruvbox-community/gruvbox")
+	use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
+  	use('nvim-treesitter/playground')
+  	use("ellisonleao/gruvbox.nvim")
 
 	use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -100,6 +103,7 @@ return packer.startup(function(use)
 	use("RRethy/vim-illuminate")
 	-- harpoon
 	use("ThePrimeagen/harpoon")
+	use("folke/zen-mode.nvim")
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end
