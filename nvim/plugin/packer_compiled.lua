@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/oanser/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["cellular-automaton.nvim"] = {
+    loaded = true,
+    path = "/home/oanser/.local/share/nvim/site/pack/packer/start/cellular-automaton.nvim",
+    url = "https://github.com/eandrju/cellular-automaton.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/oanser/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -200,7 +205,7 @@ _G.packer_plugins = {
     url = "https://github.com/tpope/vim-surround"
   },
   vimwiki = {
-    config = { "\27LJ\2\nä\1\0\0\3\0\6\0\v6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0006\0\0\0009\0\1\0005\1\5\0=\1\4\0K\0\1\0\1\0\5\b.md\rmarkdown\v.mdown\rmarkdown\14.markdown\rmarkdown\t.rmd\rmarkdown\t.Rmd\rmarkdown\23vimwiki_ext2syntax\1\0\3\vsyntax\rmarkdown\tpath ~/.local/share/nvim/vimwiki\bext\b.md\17vimwiki_list\6g\bvim\0" },
+    config = { "\27LJ\2\nä\1\0\0\3\0\6\0\v6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0006\0\0\0009\0\1\0005\1\5\0=\1\4\0K\0\1\0\1\0\5\b.md\rmarkdown\v.mdown\rmarkdown\14.markdown\rmarkdown\t.rmd\rmarkdown\t.Rmd\rmarkdown\23vimwiki_ext2syntax\1\0\3\vsyntax\rmarkdown\bext\b.md\tpath ~/.local/share/nvim/vimwiki\17vimwiki_list\6g\bvim\0" },
     loaded = true,
     path = "/home/oanser/.local/share/nvim/site/pack/packer/start/vimwiki",
     url = "https://github.com/vimwiki/vimwiki"
@@ -215,7 +220,7 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: vimwiki
 time([[Config for vimwiki]], true)
-try_loadstring("\27LJ\2\nä\1\0\0\3\0\6\0\v6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0006\0\0\0009\0\1\0005\1\5\0=\1\4\0K\0\1\0\1\0\5\b.md\rmarkdown\v.mdown\rmarkdown\14.markdown\rmarkdown\t.rmd\rmarkdown\t.Rmd\rmarkdown\23vimwiki_ext2syntax\1\0\3\vsyntax\rmarkdown\tpath ~/.local/share/nvim/vimwiki\bext\b.md\17vimwiki_list\6g\bvim\0", "config", "vimwiki")
+try_loadstring("\27LJ\2\nä\1\0\0\3\0\6\0\v6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0006\0\0\0009\0\1\0005\1\5\0=\1\4\0K\0\1\0\1\0\5\b.md\rmarkdown\v.mdown\rmarkdown\14.markdown\rmarkdown\t.rmd\rmarkdown\t.Rmd\rmarkdown\23vimwiki_ext2syntax\1\0\3\vsyntax\rmarkdown\bext\b.md\tpath ~/.local/share/nvim/vimwiki\17vimwiki_list\6g\bvim\0", "config", "vimwiki")
 time([[Config for vimwiki]], false)
 
 _G._packer.inside_compile = false

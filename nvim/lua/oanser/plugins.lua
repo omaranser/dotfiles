@@ -104,6 +104,8 @@ return packer.startup(function(use)
 	-- harpoon
 	use("ThePrimeagen/harpoon")
 	use("folke/zen-mode.nvim")
+        use("eandrju/cellular-automaton.nvim")
+
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end
