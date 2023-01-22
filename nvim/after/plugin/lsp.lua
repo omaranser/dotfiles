@@ -78,6 +78,10 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", function()
 		vim.lsp.buf.signature_help()
 	end, opts)
+
+	if client.name == "sumneko_lua" then
+		client.server_capabilities.documentFormattingProvider = false
+	end
 end)
 
 lsp.setup()
