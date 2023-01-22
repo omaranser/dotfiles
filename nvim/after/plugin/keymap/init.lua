@@ -13,7 +13,6 @@ nnoremap("<C-j>", "<C-w>j")
 nnoremap("<C-k>", "<C-w>k")
 nnoremap("<C-l>", "<C-w>l")
 
-nnoremap("<leader>f", ":Goyo | set bg=dark | set linebreak<CR>")
 nnoremap("<leader>o", ":setlocal spell! spelllang=en_us<CR>")
 nnoremap("c", "\"_c")
 -- xnoremap("<leader>p", "\"_dP")
@@ -32,4 +31,3 @@ nnoremap("<leader>p", ":!opout \"%:p\"<CR>")
 
 
 nnoremap("<leader>v", ":VimwikiIndex<CR>")
-nnoremap("<leader>n", ":NERDTreeToggle<CR>")

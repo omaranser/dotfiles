@@ -46,8 +46,13 @@ return packer.startup(function(use)
 	-- must have plugins
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 --	use("preservim/nerdtree")
-	use("nvim-lua/plenary.nvim")
-	use("junegunn/goyo.vim")
+--	use("nvim-lua/plenary.nvim")
+	use {
+		'nvim-telescope/telescope.nvim', tag = '0.1.0',
+		-- or                            , branch = '0.1.x',
+		requires = { {'nvim-lua/plenary.nvim'} }
+	}
+--	use("junegunn/goyo.vim")
 	use{"vimwiki/vimwiki",
 		config = function()
 		vim.g.vimwiki_list = {
@@ -106,6 +111,7 @@ return packer.startup(function(use)
 	use("folke/zen-mode.nvim")
         use("eandrju/cellular-automaton.nvim")
 
+	use('tpope/vim-fugitive')
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end

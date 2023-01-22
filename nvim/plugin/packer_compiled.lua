@@ -114,11 +114,6 @@ _G.packer_plugins = {
     path = "/home/oanser/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
-  ["goyo.vim"] = {
-    loaded = true,
-    path = "/home/oanser/.local/share/nvim/site/pack/packer/start/goyo.vim",
-    url = "https://github.com/junegunn/goyo.vim"
-  },
   ["gruvbox.nvim"] = {
     loaded = true,
     path = "/home/oanser/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
@@ -179,6 +174,11 @@ _G.packer_plugins = {
     path = "/home/oanser/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "/home/oanser/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
   undotree = {
     loaded = true,
     path = "/home/oanser/.local/share/nvim/site/pack/packer/start/undotree",
@@ -194,6 +194,11 @@ _G.packer_plugins = {
     path = "/home/oanser/.local/share/nvim/site/pack/packer/start/vim-commentary",
     url = "https://github.com/tpope/vim-commentary"
   },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/oanser/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
   ["vim-illuminate"] = {
     loaded = true,
     path = "/home/oanser/.local/share/nvim/site/pack/packer/start/vim-illuminate",
@@ -205,7 +210,7 @@ _G.packer_plugins = {
     url = "https://github.com/tpope/vim-surround"
   },
   vimwiki = {
-    config = { "\27LJ\2\nä\1\0\0\3\0\6\0\v6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0006\0\0\0009\0\1\0005\1\5\0=\1\4\0K\0\1\0\1\0\5\b.md\rmarkdown\v.mdown\rmarkdown\14.markdown\rmarkdown\t.rmd\rmarkdown\t.Rmd\rmarkdown\23vimwiki_ext2syntax\1\0\3\vsyntax\rmarkdown\bext\b.md\tpath ~/.local/share/nvim/vimwiki\17vimwiki_list\6g\bvim\0" },
+    config = { "\27LJ\2\nä\1\0\0\3\0\6\0\v6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0006\0\0\0009\0\1\0005\1\5\0=\1\4\0K\0\1\0\1\0\5\v.mdown\rmarkdown\14.markdown\rmarkdown\t.rmd\rmarkdown\t.Rmd\rmarkdown\b.md\rmarkdown\23vimwiki_ext2syntax\1\0\3\bext\b.md\tpath ~/.local/share/nvim/vimwiki\vsyntax\rmarkdown\17vimwiki_list\6g\bvim\0" },
     loaded = true,
     path = "/home/oanser/.local/share/nvim/site/pack/packer/start/vimwiki",
     url = "https://github.com/vimwiki/vimwiki"
@@ -220,7 +225,7 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: vimwiki
 time([[Config for vimwiki]], true)
-try_loadstring("\27LJ\2\nä\1\0\0\3\0\6\0\v6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0006\0\0\0009\0\1\0005\1\5\0=\1\4\0K\0\1\0\1\0\5\b.md\rmarkdown\v.mdown\rmarkdown\14.markdown\rmarkdown\t.rmd\rmarkdown\t.Rmd\rmarkdown\23vimwiki_ext2syntax\1\0\3\vsyntax\rmarkdown\bext\b.md\tpath ~/.local/share/nvim/vimwiki\17vimwiki_list\6g\bvim\0", "config", "vimwiki")
+try_loadstring("\27LJ\2\nä\1\0\0\3\0\6\0\v6\0\0\0009\0\1\0004\1\3\0005\2\3\0>\2\1\1=\1\2\0006\0\0\0009\0\1\0005\1\5\0=\1\4\0K\0\1\0\1\0\5\v.mdown\rmarkdown\14.markdown\rmarkdown\t.rmd\rmarkdown\t.Rmd\rmarkdown\b.md\rmarkdown\23vimwiki_ext2syntax\1\0\3\bext\b.md\tpath ~/.local/share/nvim/vimwiki\vsyntax\rmarkdown\17vimwiki_list\6g\bvim\0", "config", "vimwiki")
 time([[Config for vimwiki]], false)
 
 _G._packer.inside_compile = false
