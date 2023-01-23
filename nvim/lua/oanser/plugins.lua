@@ -106,7 +106,7 @@ return packer.startup(function(use)
 		},
 	})
 	use("jose-elias-alvarez/null-ls.nvim")
-	use("RRethy/vim-illuminate")
+	-- use("RRethy/vim-illuminate")
 	-- harpoon
 	use("ThePrimeagen/harpoon")
 	use("folke/zen-mode.nvim")
