@@ -1,3 +1,4 @@
+
 cmap ;cac /home/oanser/.cache
 cmap ;cf /home/oanser/.config
 cmap ;D /home/oanser/Downloads
