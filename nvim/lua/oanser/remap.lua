@@ -29,3 +29,7 @@ vim.keymap.set("n", "<leader>p", ':!opout "%:p"<CR>')
 vim.keymap.set("n", "<leader>v", ":VimwikiIndex<CR>")
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/oanser/plugins.lua<CR>")
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
+
+vim.keymap.set("n", "<leader><leader>", function()
+	vim.cmd("so")
+end)

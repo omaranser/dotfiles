@@ -73,6 +73,18 @@ return packer.startup(function(use)
 			}
 		end,
 	})
+	use({
+		"folke/trouble.nvim",
+		config = function()
+			require("trouble").setup({
+				icons = false,
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
+
 	use("mbbill/undotree")
 	use("tpope/vim-surround")
 	use("vim-airline/vim-airline")
@@ -83,9 +95,11 @@ return packer.startup(function(use)
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/playground")
 	use("ellisonleao/gruvbox.nvim")
+	use("nvim-treesitter/nvim-treesitter-context")
 
 	use({
 		"VonHeikemen/lsp-zero.nvim",
+		branch = "v1.x",
 		requires = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" },
