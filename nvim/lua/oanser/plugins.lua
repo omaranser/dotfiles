@@ -84,7 +84,7 @@ return packer.startup(function(use)
 			})
 		end,
 	})
-
+	use("christoomey/vim-tmux-navigator")
 	use("mbbill/undotree")
 	use("tpope/vim-surround")
 	use("vim-airline/vim-airline")
@@ -118,6 +118,9 @@ return packer.startup(function(use)
 			{ "L3MON4D3/LuaSnip" },
 			{ "rafamadriz/friendly-snippets" },
 		},
+	})
+	use({
+		"ray-x/lsp_signature.nvim",
 	})
 	use("jose-elias-alvarez/null-ls.nvim")
 	-- use("RRethy/vim-illuminate")

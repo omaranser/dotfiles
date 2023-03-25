@@ -1,4 +1,7 @@
-local lsp = require("lsp-zero")
+local lsp = require("lsp-zero").preset({
+	name = "minimal",
+	suggest_lsp_servers = false,
+})
 
 lsp.preset("recommended")
 
@@ -14,6 +17,20 @@ lsp.configure("lua_ls", {
 				globals = { "vim" },
 			},
 		},
+	},
+})
+lsp.setup_servers({
+	"pyright",
+	opts = {
+		on_attach = function(client, bufnr)
+			require("lsp_signature").on_attach({
+				bind = true, -- This is mandatory, otherwise border config won't get registered.
+				doc_lines = 0,
+				handler_opts = {
+					border = "rounded",
+				},
+			}, bufnr)
+		end,
 	},
 })
 
@@ -78,10 +95,6 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", function()
 		vim.lsp.buf.signature_help()
 	end, opts)
-
-	if client.name == "sumneko_lua" then
-		client.server_capabilities.documentFormattingProvider = false
-	end
 end)
 
 lsp.setup()

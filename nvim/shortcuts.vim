@@ -1,4 +1,3 @@
-
 cmap ;cac /home/oanser/.cache
 cmap ;cf /home/oanser/.config
 cmap ;D /home/oanser/Downloads
@@ -8,6 +7,7 @@ cmap ;d /home/oanser/Documents
 cmap ;dw /home/oanser/Documents/work/
 cmap ;dp /home/oanser/Documents/personal/
 cmap ;pap /home/oanser/Documents/work/oanser_papers/
+cmap ;myNotes /home/oanser/Documents/personal/notes/
 cmap ;dt /home/oanser/.local/share
 cmap ;rr /home/oanser/.local/src
 cmap ;h /home/oanser
