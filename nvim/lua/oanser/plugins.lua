@@ -119,9 +119,9 @@ return packer.startup(function(use)
 			{ "rafamadriz/friendly-snippets" },
 		},
 	})
-	use({
-		"ray-x/lsp_signature.nvim",
-	})
+	-- use({
+	-- 	"ray-x/lsp_signature.nvim",
+	-- })
 	use("jose-elias-alvarez/null-ls.nvim")
 	-- use("RRethy/vim-illuminate")
 	-- harpoon

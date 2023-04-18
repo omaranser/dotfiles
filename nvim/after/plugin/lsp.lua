@@ -19,20 +19,20 @@ lsp.configure("lua_ls", {
 		},
 	},
 })
-lsp.setup_servers({
-	"pyright",
-	opts = {
-		on_attach = function(client, bufnr)
-			require("lsp_signature").on_attach({
-				bind = true, -- This is mandatory, otherwise border config won't get registered.
-				doc_lines = 0,
-				handler_opts = {
-					border = "rounded",
-				},
-			}, bufnr)
-		end,
-	},
-})
+-- lsp.setup_servers({
+-- 	"pyright",
+-- 	opts = {
+-- 		on_attach = function(client, bufnr)
+-- 			require("lsp_signature").on_attach({
+-- 				bind = true, -- This is mandatory, otherwise border config won't get registered.
+-- 				doc_lines = 0,
+-- 				handler_opts = {
+-- 					border = "rounded",
+-- 				},
+-- 			}, bufnr)
+-- 		end,
+-- 	},
+-- })
 
 local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
