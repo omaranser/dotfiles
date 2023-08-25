@@ -130,6 +130,7 @@ return packer.startup(function(use)
 	use("eandrju/cellular-automaton.nvim")
 
 	use("tpope/vim-fugitive")
+	use("github/copilot.vim")
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
