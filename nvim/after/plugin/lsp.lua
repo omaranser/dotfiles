@@ -19,6 +19,17 @@ lsp.configure("lua_ls", {
 		},
 	},
 })
+lsp.configure("pyright", {
+	settings = {
+		python = {
+			analysis = {
+				autoSearchPaths = true,
+				useLibraryCodeForTypes = true,
+				diagnosticMode = "openFilesOnly",
+			},
+		},
+	},
+})
 -- lsp.setup_servers({
 -- 	"pyright",
 -- 	opts = {
@@ -28,12 +39,12 @@ lsp.configure("lua_ls", {
 -- 				doc_lines = 0,
 -- 				handler_opts = {
 -- 					border = "rounded",
+-- 					hint_prefix = " ",
 -- 				},
 -- 			}, bufnr)
 -- 		end,
 -- 	},
 -- })
-
 local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({

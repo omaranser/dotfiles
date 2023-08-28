@@ -16,7 +16,7 @@ vim.keymap.set("n", "<leader>o", ":setlocal spell! spelllang=en_us<CR>")
 vim.keymap.set("n", "c", '"_c')
 -- vim.keymap.set("x", "<leader>p", "\"_dP")
 
-vim.keymap.set("v", "Q", "gq")
+vim.keymap.set("v", "Q", "gw")
 vim.keymap.set("v", ".", ":normal .<CR>")
 
 vim.keymap.set("n", "<leader>s", ":!clear && shellcheck -x %<CR>")

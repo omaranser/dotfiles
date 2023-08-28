@@ -69,7 +69,7 @@ lua require("oanser")
 "	map <C-l> <C-w>l
 
 " Replace ex mode with gq
-	"map Q gq
+	" map Q gq
 
 " Check file in shellcheck:
 	"map <leader>s :!clear && shellcheck -x %<CR>
@@ -111,6 +111,8 @@ lua require("oanser")
  	autocmd BufWritePre * let currPos = getpos(".")
 	autocmd BufWritePre * %s/\s\+$//e
 	autocmd BufWritePre * %s/\n\+\%$//e
+  autocmd BufWritePre *.[ch] %s/\%$/\r/e " add trailing newline for ANSI C standard
+  autocmd BufWritePre *neomutt* %s/^--$/-- /e " dash-dash-space signature delimiter in emails
   	autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
 
 " When shortcut files are updated, renew bash and ranger configs with new material:
