@@ -12,7 +12,9 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup({
 	debug = false,
 	sources = {
-		formatting.black.with({ extra_args = { "--fast", "--line-length", "79", "--experimental-string-processing"} }),
+		formatting.black.with({
+			extra_args = { "--fast", "--line-length", "79", "--experimental-string-processing" },
+		}),
 		formatting.stylua,
 		diagnostics.flake8,
 	},
