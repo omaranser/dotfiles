@@ -1,0 +1,2 @@
+- Change lsp-zero version from 1.x to 3.x, follow this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/configuration-templates.md#primes-config
+- Install stylua with yay
